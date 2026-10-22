@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School ID Card Generator - विद्यार्थी एवं शिक्षक पहचान-पत्र जनरेटर</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css?v=20261016_5">
+  <!-- Offline Libraries (bundled inside js folder) -->
+  <script src="js/xlsx.full.min.js"></script>
+  <script src="js/qrcode.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="logo-brand">
+      <div class="brand-icon">🪪</div>
+      <div>
+        <h1>School ID Card Generator (स्मार्ट पहचान-पत्र निर्माता)</h1>
+        <p>Creative Teachers Tools • स्मार्ट पहचान-पत्र निर्माता • वर्टिकल एवं हॉरिजॉन्टल A4 प्रिंट</p>
+      </div>
+    </div>
+
+    <!-- Center Top Portal Link & Guide Button -->
+    <div class="header-center-nav">
+      <a href="https://www.creativeteachers.in/" target="_blank" rel="noopener noreferrer" class="portal-website-link" title="Creative Teachers Official Website">
+        🌐 www.creativeteachers.in
+      </a>
+      <button class="btn-help-guide" onclick="openHowToUseModal()" title="सॉफ्टवेयर उपयोग विधि">
+        📖 उपयोग विधि (How to Use)
+      </button>
+    </div>
+
+    <div class="header-badges">
+      <div class="badge-pill">⚡ 100% Offline</div>
+      <div class="badge-pill">📄 8-10 Cards Per A4 Page</div>
+    </div>
+  </header>
+
+  <!-- Main Application Container -->
+  <main class="app-container">
+
+    <!-- Mode Switcher (Student vs Teacher) -->
+    <div class="mode-switcher">
+      <button class="mode-tab active" id="tab-student" onclick="setMode('student')">
+        🎓 विद्यार्थी पहचान-पत्र (Student ID Card Mode)
+      </button>
+      <button class="mode-tab" id="tab-teacher" onclick="setMode('teacher')">
+        👨‍🏫 शिक्षक / स्टाफ पहचान-पत्र (Staff & Teacher ID Card Mode)
+      </button>
+    </div>
+
+    <!-- Left Controls Column -->
+    <div class="controls-column">
+
+      <!-- 1. School Information Panel (Heading at the Top) -->
+      <section class="panel">
+        <div class="panel-header">
+          <h2>🏫 विद्यालय / संस्था का विवरण</h2>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="school-name">विद्यालय / कार्यालय का नाम:</label>
+            <input type="text" id="school-name" class="form-control" value="रा.उ.मा.वि. साकोदरा (डूंगरपुर)" oninput="updateLiveCard()">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="school-udise">U-DISE कोड / ब्लॉक:</label>
+              <input type="text" id="school-udise" class="form-control" value="08240304502" oninput="updateLiveCard()">
+            </div>
+            <div class="form-group">
+              <label for="school-session">सत्र (Session):</label>
+              <input type="text" id="school-session" class="form-control" value="2026-27" oninput="updateLiveCard()">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="school-address">पता एवं जिला (Address):</label>
+            <input type="text" id="school-address" class="form-control" value="चीखली, डूंगरपुर (राज.) 314030" oninput="updateLiveCard()">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="school-logo-input">स्कूल लोगो (Logo):</label>
+              <input type="file" id="school-logo-input" class="form-control" accept="image/*" onchange="handleLogoUpload(event)">
+            </div>
+            <div class="form-group">
+              <label for="school-sign-input">हस्ताक्षर / मुहर (Sign):</label>
+              <input type="file" id="school-sign-input" class="form-control" accept="image/*" onchange="handleSignUpload(event)">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Custom Blank ID Card Design Upload -->
+      <section class="panel" style="border: 2px dashed #2563eb; background: #f0f7ff;">
+        <div class="panel-header" style="background:#e0f2fe; cursor:pointer;" onclick="toggleCustomDesignPanel()">
+          <h2 style="color:#1d4ed8; display:flex; align-items:center; gap:6px;">
+            <span>🖼️ कस्टम ब्लैंक डिज़ाइन (Upload Blank Template)</span>
+          </h2>
+          <span id="custom-design-arrow" style="font-size:12px; color:#1d4ed8; font-weight:bold;">▼</span>
+        </div>
+        <div class="panel-body" id="custom-design-body" style="display:none;">
+          <p style="font-size:11.5px; color:#334155; margin-bottom:8px; line-height:1.4;">
+            यदि आपके पास फ़ोटोशॉप या कैनवा का <strong>खाली (Blank) कार्ड डिज़ाइन</strong> है, तो उसे यहाँ अपलोड करें। सॉफ्टवेयर उस पर डेटा व फोटो स्वतः सेट कर देगा:
+          </p>
+
+          <div class="form-group">
+            <label style="font-weight:700;">ब्लैंक बैकग्राउंड इमेज (.jpg, .png):</label>
+            <input type="file" id="custom-card-bg-input" class="form-control" accept="image/*" onchange="handleCustomBgUpload(event)">
+          </div>
+
+          <div id="custom-bg-preview-wrap" style="display:none; margin: 8px 0; text-align:center;">
+            <div style="font-size:11px; font-weight:700; color:#16a34a; margin-bottom:4px;">✓ कस्टम बैकग्राउंड लोड हो गया है</div>
+            <img id="custom-bg-thumb" style="max-height:75px; max-width:140px; border-radius:4px; border:1px solid #94a3b8; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+            <div style="margin-top:6px; display:flex; gap:6px; justify-content:center;">
+              <button class="btn btn-sm btn-outline" onclick="removeCustomBg()">🗑️ बैकग्राउंड हटाएं</button>
+            </div>
+          </div>
+
+          <div style="background:#ffffff; border:1px solid #bfdbfe; border-radius:6px; padding:8px; margin-top:8px;">
+            <label style="display:flex; align-items:flex-start; gap:6px; font-size:11.5px; cursor:pointer; font-weight:600; color:#1e293b;">
+              <input type="checkbox" id="chk-hide-school-header" onchange="toggleCustomHeaderHide(this.checked)" style="margin-top:2px;">
+              <span>डिफ़ॉल्ट हेडर टेक्स्ट छिपाएं (यदि आपकी इमेज में स्कूल का नाम पहले से छपा हो)</span>
+            </label>
+            <label style="display:flex; align-items:flex-start; gap:6px; font-size:11.5px; cursor:pointer; font-weight:600; color:#1e293b; margin-top:6px;">
+              <input type="checkbox" id="chk-hide-footer" onchange="toggleCustomFooterHide(this.checked)" style="margin-top:2px;">
+              <span>फुटर बैकग्राउंड पारदर्शी रखें (Transparent Footer)</span>
+            </label>
+          </div>
+
+          <div style="margin-top:8px; display:flex; gap:6px;">
+            <button class="btn btn-primary btn-sm btn-block" id="btn-toggle-custom-mode" onclick="enableCustomDesignMode()">
+              ✨ इस ब्लैंक डिज़ाइन को लागू करें
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Card Orientation (Vertical vs Horizontal) -->
+      <section class="panel">
+        <div class="panel-header">
+          <h2>📐 कार्ड ओरिएंटेशन (Card Layout)</h2>
+        </div>
+        <div class="panel-body" style="padding-bottom: 8px;">
+          <div class="orientation-switcher">
+            <button class="orientation-btn active" id="btn-orient-portrait" onclick="setOrientation('portrait')">
+              📱 वर्टिकल (Portrait)
+            </button>
+            <button class="orientation-btn" id="btn-orient-landscape" onclick="setOrientation('landscape')">
+              💳 हॉरिजॉन्टल (Landscape)
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Card Design Chooser (COLLAPSED BY DEFAULT) -->
+      <section class="panel">
+        <button class="accordion-toggle-btn" id="btn-accordion-toggle" onclick="toggleDesignAccordion()">
+          <span>🎨 कार्ड डिज़ाइन चुनें (वर्तमान: <strong id="current-design-name" style="color:var(--primary);">Modern Royal Blue</strong>)</span>
+          <span class="accordion-icon" id="accordion-arrow">▼</span>
+        </button>
+        <div id="design-accordion-body" class="accordion-body" style="display: none;">
+          <p style="font-size:11.5px; color:#64748b; margin-bottom:8px;">
+            नीचे दिए गए प्रीमियम डिज़ाइनों में से अपनी पसंद का टेम्पलेट चुनें:
+          </p>
+          <div class="template-grid" id="template-options-container">
+            <!-- Dynamic Templates injected by JavaScript -->
+          </div>
+          <button class="btn btn-primary btn-sm btn-block" style="margin-top:10px;" onclick="toggleDesignAccordion()">
+            ✓ डिज़ाइन चयन संपन्न (Done)
+          </button>
+        </div>
+      </section>
+
+      <!-- 4. Data Entry Mode (Bulk Excel vs Single Entry) -->
+      <section class="panel">
+        <div class="panel-header">
+          <h2>📥 डेटा दर्ज करें (Data Entry)</h2>
+          <div style="display:flex; gap:6px;">
+            <button class="btn btn-outline btn-sm active" id="btn-subtab-bulk" onclick="switchDataTab('bulk')">बल्क एक्सेल</button>
+            <button class="btn btn-outline btn-sm" id="btn-subtab-manual" onclick="switchDataTab('manual')">सिंगल फॉर्म</button>
+          </div>
+        </div>
+        <div class="panel-body">
+
+          <!-- Subtab A: Bulk Excel Upload -->
+          <div id="data-tab-bulk">
+            <div class="upload-dropzone" onclick="document.getElementById('excel-file-input').click()">
+              <div class="upload-icon">📊</div>
+              <div class="upload-title">Excel या CSV फाइल यहाँ अपलोड करें</div>
+              <div class="upload-desc">.xlsx, .xls या .csv फाइल चुनें या यहाँ ड्रैग करें</div>
+              <input type="file" id="excel-file-input" style="display:none;" accept=".xlsx, .xls, .csv" onchange="handleExcelUpload(event)">
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:12px;">
+              <button class="btn btn-outline btn-sm btn-block" onclick="downloadSampleFile()">
+                📥 सैंपल एक्सेल डाउनलोड करें
+              </button>
+              <button class="btn btn-outline btn-sm btn-block" onclick="loadDemoData()">
+                ⚡ डेमो डेटा लोड करें
+              </button>
+            </div>
+
+            <!-- Bulk Photo Matcher -->
+            <div style="margin-top:14px; border-top:1px solid #e2e8f0; padding-top:10px;">
+              <label style="font-size:12px; font-weight:600; color:#475569;">
+                📷 सभी छात्रों/शिक्षकों के फोटो एक साथ अपलोड करें (Optional):
+              </label>
+              <input type="file" id="bulk-photos-input" class="form-control" multiple accept="image/*" onchange="handleBulkPhotosUpload(event)">
+              <p style="font-size:11px; color:#64748b; margin-top:3px;">
+                *टिप: फोटो का नाम छात्र के SR No / रोल नंबर या शिक्षक के Emp ID जैसा रखें (उदा. 101.jpg, RJ-DU-1021.png)
+              </p>
+            </div>
+          </div>
+
+          <!-- Subtab B: Manual Single Entry -->
+          <div id="data-tab-manual" style="display:none;">
+            <!-- Fields for Student Mode -->
+            <div id="manual-student-fields">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>विद्यार्थी का नाम (Name):</label>
+                  <input type="text" id="m-stu-name" class="form-control" value="Aarav Sharma" oninput="updateLiveCard()">
+                </div>
+                <div class="form-group">
+                  <label>पिता का नाम (Father's Name):</label>
+                  <input type="text" id="m-stu-fname" class="form-control" value="Rajesh Sharma" oninput="updateLiveCard()">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>कक्षा व वर्ग (Class & Sec):</label>
+                  <input type="text" id="m-stu-class" class="form-control" value="10th - A" oninput="updateLiveCard()">
+                </div>
+                <div class="form-group">
+                  <label>एस.आर. नंबर (Scholar No):</label>
+                  <input type="text" id="m-stu-sr" class="form-control" value="101" oninput="updateLiveCard()">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>रोल नंबर (Roll No):</label>
+                  <input type="text" id="m-stu-roll" class="form-control" value="1" oninput="updateLiveCard()">
+                </div>
+                <div class="form-group">
+                  <label>जन्मतिथि (DOB):</label>
+                  <input type="text" id="m-stu-dob" class="form-control" value="15/07/2010" oninput="updateLiveCard()">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>मोबाइल नंबर (Mobile No):</label>
+                <input type="text" id="m-stu-mobile" class="form-control" value="9876543210" oninput="updateLiveCard()">
+              </div>
+              <div class="form-group">
+                <label>अभिभावक का पता (Address):</label>
+                <input type="text" id="m-stu-address" class="form-control" value="Ward No. 4, Sakodara" oninput="updateLiveCard()">
+              </div>
+              <div class="form-group">
+                <label>छात्र फोटो (Photo):</label>
+                <input type="file" id="m-stu-photo" class="form-control" accept="image/*" onchange="handleSinglePhotoUpload(event)">
+              </div>
+            </div>
+
+            <!-- Fields for Teacher Mode -->
+            <div id="manual-teacher-fields" style="display:none;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>शिक्षक का नाम (Teacher Name):</label>
+                  <input type="text" id="m-tea-name" class="form-control" value="Nagji Yadav" oninput="updateLiveCard()">
+                </div>
+                <div class="form-group">
+                  <label>पद (Designation):</label>
+                  <input type="text" id="m-tea-desig" class="form-control" value="Lecturer (School Education)" oninput="updateLiveCard()">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>एम्प्लॉई आईडी / NIC-SD ID:</label>
+                  <input type="text" id="m-tea-empid" class="form-control" value="RJ-DU-1021" oninput="updateLiveCard()">
+                </div>
+                <div class="form-group">
+                  <label>विषय / विभाग (Subject):</label>
+                  <input type="text" id="m-tea-sub" class="form-control" value="Computer Science" oninput="updateLiveCard()">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>मोबाइल नंबर (Mobile No):</label>
+                <input type="text" id="m-tea-mobile" class="form-control" value="9982151938" oninput="updateLiveCard()">
+              </div>
+              <div class="form-group">
+                <label>शिक्षक फोटो (Photo):</label>
+                <input type="file" id="m-tea-photo" class="form-control" accept="image/*" onchange="handleSinglePhotoUpload(event)">
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" onclick="addManualCardToList()">
+              ➕ इस कार्ड को सूची में जोड़ें
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Right Preview & Print Column -->
+    <div class="preview-column">
+      <div class="preview-container">
+
+        <!-- Toolbar -->
+        <div class="preview-toolbar">
+          <div class="preview-stats" style="display:flex; align-items:center; gap:10px;">
+            <span>कुल लोड किए गए कार्ड: <strong id="cards-count-badge" style="color:var(--primary);">8 कार्ड</strong></span>
+            <button class="btn btn-sm" onclick="clearAllData()" style="background:#fee2e2; color:#b91c1c; border:1.5px solid #fca5a5; font-weight:700; border-radius:6px; padding:5px 12px; cursor:pointer;" title="सभी लोड किए गए कार्ड्स एक साथ हटाएं">
+              🗑️ बल्क डिलीट (Bulk Delete)
+            </button>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn btn-outline btn-sm" onclick="prevCard()">◀ पिछला</button>
+            <span id="current-card-indicator" style="font-weight:700; font-size:12.5px; min-width:48px; text-align:center;">1 / 8</span>
+            <button class="btn btn-outline btn-sm" onclick="nextCard()">अगला ▶</button>
+            <button class="btn btn-success" onclick="triggerPrintA4()">
+              🖨️ A4 शीट पर प्रिंट निकालें (PDF)
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Card Preview Stage -->
+        <div class="preview-stage">
+          <div id="live-card-render-box">
+            <!-- Rendered Live ID Card -->
+          </div>
+        </div>
+
+        <!-- Bulk Cards Data Sheet (Table Header Row Removed, Bulk Delete Button Added) -->
+        <div class="panel" style="overflow:hidden; border:1px solid var(--border-color); border-radius:12px; margin-top:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 14px; background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+            <span style="font-weight:700; color:#334155; font-size:12.5px;">📋 लोड किए गए पहचान-पत्र डेटा सूची</span>
+            <button class="btn btn-sm" style="background:#ef4444; color:#ffffff; border:none; padding:5px 14px; font-weight:700; border-radius:6px; cursor:pointer; font-size:12px; box-shadow:0 1px 3px rgba(239,68,68,0.3);" onclick="clearAllData()">
+              🗑️ बल्क डिलीट (सभी कार्ड्स हटाएं)
+            </button>
+          </div>
+          <div class="panel-body" style="padding:0; overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-size:12px; text-align:left;">
+              <tbody id="cards-data-tbody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Hidden Print Engine Container (Only Visible During Browser Print Ctrl+P) -->
+  <div id="print-output-container">
+    <!-- A4 Pages filled with 8 or 10 ID cards each are injected here dynamically -->
+  </div>
+
+  <!-- Modal: How to Use (संपूर्ण उपयोग विधि) -->
+  <div id="how-to-use-modal" class="modal-backdrop" style="display:none;" onclick="if(event.target===this) closeHowToUseModal()">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:22px;">📖</span>
+          <h2 style="font-size:18px; margin:0; color:#0f172a;">School ID Card Generator - संपूर्ण उपयोग विधि (Step-by-Step Guide)</h2>
+        </div>
+        <button class="modal-close-btn" onclick="closeHowToUseModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="guide-banner">
+          <p>यह सॉफ्टवेयर राजस्थान एवं अन्य विद्यालयों के लिए विशेष रूप से तैयार किया गया है। इसके सभी टूल्स <strong>100% ऑफ़लाइन</strong> चलते हैं और किसी भी प्रकार के इंटरनेट की आवश्यकता नहीं होती।</p>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>मोड का चयन करें (Student vs Teacher Mode)</h3>
+            <p>सॉफ्टवेयर में ऊपर दिए गए दो मुख्य टैब्स में से आवश्यकतानुसार चयन करें:</p>
+            <ul>
+              <li><strong>🎓 विद्यार्थी पहचान-पत्र:</strong> विद्यार्थियों के कार्ड के लिए (पिता का नाम, SR नंबर, रोल नंबर, कक्षा, जन्मतिथि, अभिभावक मोबाइल व पता)।</li>
+              <li><strong>👨‍🏫 शिक्षक / स्टाफ पहचान-पत्र:</strong> विद्यालय के शिक्षकों एवं कार्मिकों के लिए (पद/Designation, शाला दर्पण Staff NIC-SD ID / Emp ID, विषय/विभाग, मोबाइल नंबर)।</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>विद्यालय / संस्था का विवरण एवं लोगो/मुहर भरें</h3>
+            <p>बाएँ कॉलम में '🏫 विद्यालय / संस्था का विवरण' पैनल में:</p>
+            <ul>
+              <li>विद्यालय का पूरा नाम, पता, U-DISE कोड एवं शैक्षणिक सत्र (उदा. 2026-27) लिखें।</li>
+              <li><strong>स्कूल लोगो (Logo):</strong> अपनी संस्था का लोगो अपलोड करें (यह सभी कार्ड्स पर स्वतः सेट हो जाएगा)।</li>
+              <li><strong>डिजिटल हस्ताक्षर/मुहर (Sign/Stamp):</strong> संस्था प्रधान के हस्ताक्षर या मुहर की फोटो अपलोड करें (यह सभी कार्ड्स के फुटर में स्वतः लग जाएगी)।</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>कार्ड ओरिएंटेशन चुनें (वर्टिकल या हॉरिजॉन्टल)</h3>
+            <p>'📐 कार्ड ओरिएंटेशन' पैनल में दो विकल्प उपलब्ध हैं:</p>
+            <ul>
+              <li><strong>📱 वर्टिकल (Portrait):</strong> सीधा (लंबवत) आईडी कार्ड (Lanyard / डोरी वाले पाउच के लिए)।</li>
+              <li><strong>💳 हॉरिजॉन्टल (Landscape):</strong> आड़ा (क्षैतिज) आईडी कार्ड (पिन या क्लिप वाले पाउच के लिए)।</li>
+              <li>एक क्लिक में सभी कार्ड्स का लेआउट तुरंत बदल जाता है।</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>कार्ड डिज़ाइन (थीम) चुनें</h3>
+            <p>'🎨 कार्ड डिज़ाइन चुनें' बटन पर क्लिक करके दिए गए आकर्षक रेडीमेड डिज़ाइनों में से अपनी पसंद का टेम्पलेट चुनें। आप जब चाहें किसी भी समय डिज़ाइन बदल सकते हैं, डेटा सुरक्षित रहेगा।</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h3>कस्टम ब्लैंक डिज़ाइन अपलोड करें (Optional)</h3>
+            <p>यदि आपने Canva, Photoshop या CorelDraw से कोई अपना खाली बैकग्राउंड तैयार किया है:</p>
+            <ul>
+              <li>'🖼️ कस्टम ब्लैंक डिज़ाइन' पैनल खोलें।</li>
+              <li>अपनी ब्लैंक इमेज (.jpg या .png) अपलोड करें।</li>
+              <li>यदि आपकी इमेज में स्कूल का नाम पहले से छपा है, तो <em>'डिफ़ॉल्ट हेडर टेक्स्ट छिपाएं'</em> पर टिक करें।</li>
+              <li><em>'फुटर बैकग्राउंड पारदर्शी रखें'</em> को चेक करें ताकि आपका बैकग्राउंड दब न सके।</li>
+              <li>'✨ इस ब्लैंक डिज़ाइन को लागू करें' बटन दबाएं। सॉफ्टवेयर आपके बैकग्राउंड पर फोटो, नाम व संपूर्ण विवरण स्वतः सटीक सेट कर देगा।</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <h3>डेटा लोड करने के तरीके (बल्क एक्सेल व सिंगल फॉर्म)</h3>
+            <ul>
+              <li><strong>📊 तरीका 1 - बल्क एक्सेल/सीएसवी:</strong>
+                <ul>
+                  <li>'📥 सैंपल एक्सेल डाउनलोड करें' पर क्लिक करें।</li>
+                  <li>उस एक्सेल फाइल में अपने विद्यालय के बच्चों या शिक्षकों का डेटा भरें।</li>
+                  <li>फाइल को 'Excel या CSV फाइल यहाँ अपलोड करें' बॉक्स में ड्रैग या सेलेक्ट करें। सभी कार्ड्स तुरंत जनरेट हो जाएंगे!</li>
+                  <li>तुरंत अभ्यास के लिए आप '⚡ डेमो डेटा लोड करें' बटन भी दबा सकते हैं।</li>
+                </ul>
+              </li>
+              <li><strong>✏️ तरीका 2 - सिंगल फॉर्म (Manual Single Entry):</strong>
+                <ul>
+                  <li>'सिंगल फॉर्म' टैब पर क्लिक करके एक-एक छात्र/शिक्षक का विवरण व फोटो भरकर '➕ इस कार्ड को सूची में जोड़ें' बटन से जोड़ सकते हैं।</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">7</div>
+          <div class="step-content">
+            <h3>फोटो अपलोड व ऑटो-मिलान सिस्टम</h3>
+            <ul>
+              <li><strong>📷 सभी फोटो एक साथ लगाना:</strong> सभी छात्रों के फोटो का नाम उनके <em>SR नंबर या रोल नंबर</em> (उदा. <code>101.jpg</code>, <code>102.png</code>) तथा शिक्षकों के फोटो का नाम उनकी <em>Employee ID</em> (उदा. <code>RJ-DU-1021.jpg</code>) के रूप में रखें। फिर 'सभी फोटो एक साथ अपलोड करें' में जाकर सभी फोटो एक साथ सेलेक्ट करें। सॉफ्टवेयर स्वतः हर कार्ड में सही फोटो जोड़ देगा!</li>
+              <li><strong>✏️ छूटी हुई फोटो मैन्युअल लगाना:</strong> यदि किसी छात्र या शिक्षक की फोटो छूट गई हो या बदलनी हो, तो नीचे डेटा शीट टेबल में उसके नाम के आगे <strong>'📷 फोटो लगाएं' / '✏️ बदलें'</strong> बटन दिया गया है। उस पर क्लिक करके आप सीधे किसी भी एक व्यक्ति की फोटो तुरंत लगा सकते हैं।</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">8</div>
+          <div class="step-content">
+            <h3>A4 शीट पर सही प्रिंट निकालने की सेटिंग (Important)</h3>
+            <p>ऊपर दाएँ कोने में <strong>'🖨️ A4 शीट पर प्रिंट निकालें (PDF)'</strong> बटन दबाएं (या कीबोर्ड से <code>Ctrl + P</code> दबाएं)।</p>
+            <p>ब्राउज़र की प्रिंट विंडो में निम्नलिखित सेटिंग्स अवश्य करें:</p>
+            <div class="print-settings-box">
+              <div class="print-setting-row"><strong>Destination (प्रिंटर):</strong> Save as PDF (या अपना कलर प्रिंटर)</div>
+              <div class="print-setting-row"><strong>Pages:</strong> All</div>
+              <div class="print-setting-row"><strong>Layout / Orientation:</strong> Portrait (वर्टिकल कार्ड्स के लिए) या Landscape (हॉरिजॉन्टल कार्ड्स के लिए)</div>
+              <div class="print-setting-row"><strong>Paper Size:</strong> A4</div>
+              <div class="print-setting-row"><strong>Margins:</strong> None (या Custom: 0)</div>
+              <div class="print-setting-row"><strong>Scale:</strong> 100% (या 'Fit to Printable Area')</div>
+              <div class="print-setting-row highlight"><strong>Options:</strong> ✅ Background graphics (पृष्ठभूमि ग्राफ़िक्स) को <u>अवश्य टिक</u> रखें! (अन्यथा बैकग्राउंड कलर प्रिंट नहीं होगा)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <a href="https://www.creativeteachers.in/" target="_blank" class="btn btn-outline btn-sm">🌐 विजिट करें: www.creativeteachers.in</a>
+        <button class="btn btn-primary" onclick="closeHowToUseModal()">समझ गया (Close)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js?v=20261016_5"></script>
+</body>
+</html>

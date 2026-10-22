@@ -1,0 +1,1808 @@
+/* ==========================================================================
+   School ID Card Generator - Professional Stylesheet
+   Professional ID Card Designs (Portrait & Landscape)
+   Maximum A4 Paper Utilization & Flawless Layouts
+   Creative Teachers Tools (www.creativeteachers.in)
+   ========================================================================== */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --secondary: #0f172a;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --bg-light: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #cbd5e1;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.15), 0 4px 6px -4px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f1f5f9;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* App Header */
+.app-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-brand .brand-icon {
+  font-size: 28px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+.logo-brand h1 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.logo-brand p {
+  font-size: 11.5px;
+  color: #93c5fd;
+}
+
+/* Header Center Navigation */
+.header-center-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.portal-website-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.portal-website-link:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.55);
+}
+
+.btn-help-guide {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1.5px solid #fcd34d;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-help-guide:hover {
+  background: #fde68a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
+}
+
+.header-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.badge-pill {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  color: #ffffff;
+}
+
+/* App Container */
+.app-container {
+  max-width: 1450px;
+  margin: 18px auto;
+  padding: 0 20px 40px;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 22px;
+}
+
+.controls-column {
+  align-self: start;
+}
+
+@media (max-width: 1050px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mode Switcher Tabs */
+.mode-switcher {
+  grid-column: 1 / -1;
+  display: flex;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  gap: 8px;
+}
+
+.mode-tab {
+  flex: 1;
+  padding: 12px 18px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.mode-tab:hover {
+  background: #f8fafc;
+  color: var(--primary);
+}
+
+.mode-tab.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Panels */
+.panel {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-header h2 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.panel-body {
+  padding: 16px;
+}
+
+/* Collapsible Design Accordion */
+.accordion-toggle-btn {
+  width: 100%;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+
+.accordion-toggle-btn:hover {
+  background: #f1f5f9;
+}
+
+.accordion-icon {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+  color: var(--primary);
+}
+
+.accordion-icon.open {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  padding: 14px;
+  border-top: 1px solid var(--border-color);
+  background: #fafafa;
+}
+
+/* Template Selection Grid (10+ Templates) */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.template-card {
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.template-card:hover {
+  border-color: #93c5fd;
+  transform: translateY(-2px);
+}
+
+.template-card.active {
+  border-color: var(--primary);
+  background: #eff6ff;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.template-thumb {
+  width: 100%;
+  height: 48px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 10.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.template-name {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+/* Orientation Switcher */
+.orientation-switcher {
+  display: flex;
+  background: #e2e8f0;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.orientation-btn {
+  flex: 1;
+  padding: 7px 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.orientation-btn.active {
+  background: #ffffff;
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 4px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: var(--text-main);
+  background-color: #fff;
+  transition: border-color 0.15s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Upload Box */
+.upload-dropzone {
+  border: 2px dashed #93c5fd;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background: #f0f7ff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--primary);
+  background: #e0f2fe;
+}
+
+.upload-icon {
+  font-size: 28px;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.upload-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.upload-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-success {
+  background: var(--success);
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background: #059669;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* Right Column - Preview Area */
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.preview-toolbar {
+  background: #ffffff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.preview-stats {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.preview-stats span {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.preview-stage {
+  background: #cbd5e1;
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 540px;
+  overflow: auto;
+}
+
+/* ==========================================================================
+   ID CARD ENGINE - PORTRAIT (VERTICAL: Standard CR80 Ratio)
+   Preview sizing: 310px width x 505px height (Ample room, ZERO cut off)
+   ========================================================================== */
+
+.id-card {
+  width: 310px;
+  min-height: 505px;
+  height: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+  background-color: #ffffff;
+  margin: 10px auto;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.card-punch-hole {
+  width: 38px;
+  height: 7px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin: 6px auto 0 auto;
+  z-index: 10;
+}
+
+/* Photo Box Styling (Clean, Professional, No leaking text) */
+.photo-container {
+  width: 95px;
+  height: 110px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px auto;
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.school-logo-emblem {
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin: 0 auto 4px auto;
+}
+
+/* ==========================================================================
+   ID CARD ENGINE - LANDSCAPE (HORIZONTAL: Standard CR80 Ratio)
+   Preview sizing: 485px width x 305px height (Ample room, ZERO cut off)
+   ========================================================================== */
+
+.id-card.card-horizontal {
+  width: 485px;
+  min-height: 305px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: auto 1fr auto;
+  border-radius: 10px;
+  overflow: visible;
+}
+
+.card-horizontal .card-punch-hole {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.card-horizontal .card-header {
+  grid-column: 1 / -1;
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  text-align: center !important;
+  clip-path: none !important;
+}
+
+.card-horizontal .school-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+.card-horizontal .landscape-header-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-horizontal .landscape-header-content .school-name {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.card-horizontal .landscape-header-content .school-address {
+  font-size: 9px;
+  line-height: 1.2;
+  margin: 2px 0 3px 0;
+  opacity: 0.95;
+}
+
+.card-horizontal .landscape-header-content .header-tier-role {
+  margin-top: 1px;
+}
+
+.card-horizontal .landscape-header-content .badge-role {
+  font-size: 10px;
+  padding: 2px 14px;
+}
+
+.card-horizontal .card-left-col {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+.card-horizontal .card-left-col .photo-container {
+  width: 82px;
+  height: 96px;
+  margin: 0 0 6px 0 !important;
+}
+
+.card-horizontal .card-right-col {
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.card-horizontal .person-name {
+  font-size: 17px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin: 0 0 2px 0 !important;
+  letter-spacing: 0.3px;
+}
+
+.card-horizontal .person-sub {
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  margin-bottom: 4px !important;
+}
+
+.card-horizontal .details-table {
+  width: 100% !important;
+  font-size: 12px !important;
+  margin: auto 0 !important;
+  text-align: center !important;
+}
+
+.card-horizontal .details-table td {
+  padding: 3.5px 2px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+.card-horizontal .details-table .lbl {
+  font-weight: 700 !important;
+  color: #475569 !important;
+  text-align: right !important;
+  width: 44% !important;
+  padding-right: 8px !important;
+  white-space: nowrap !important;
+}
+
+.card-horizontal .details-table .val {
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  text-align: left !important;
+  width: 56% !important;
+  padding-left: 2px !important;
+}
+
+.card-horizontal .card-footer {
+  grid-column: 1 / -1;
+  padding: 5px 14px !important;
+}
+
+/* ==========================================================================
+   PREMIUM TEMPLATE THEMES & COLOR COMBINATIONS
+   ========================================================================== */
+
+/* Template 1: Modern Royal Blue & White */
+.tpl-canva-blue .card-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: white;
+  padding: 10px 12px 8px 12px;
+  text-align: center;
+  border-bottom: 3px solid #60a5fa;
+  clip-path: none !important;
+}
+.tpl-canva-blue .school-name { font-size: 13.5px; font-weight: 800; text-transform: uppercase; color: #fff; }
+.tpl-canva-blue .school-address { font-size: 8.5px; color: #bfdbfe; }
+.tpl-canva-blue .photo-container { border: 3px solid #2563eb; }
+.tpl-canva-blue .badge-role { background: rgba(255, 255, 255, 0.22); color: #fff; border: 1px solid rgba(255, 255, 255, 0.45); font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 12px; margin: 2px 0 0 0; }
+.tpl-canva-blue .person-name { font-size: 15px; font-weight: 800; color: #0f172a; }
+.tpl-canva-blue .person-sub { font-size: 11px; font-weight: 700; color: #2563eb; }
+.tpl-canva-blue .lbl { font-weight: 700; color: #64748b; width: 42%; }
+.tpl-canva-blue .val { font-weight: 600; color: #0f172a; }
+.tpl-canva-blue .card-footer { background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Template 2: Geometric Diagonal Navy & Orange */
+.tpl-diag-orange .card-header { background: #0f172a; border-bottom: 4px solid #f97316; color: white; padding: 12px; text-align: center; }
+.tpl-diag-orange .school-name { font-size: 13px; font-weight: 800; color: #f8fafc; }
+.tpl-diag-orange .school-address { font-size: 8.5px; color: #cbd5e1; }
+.tpl-diag-orange .photo-container { border: 3px solid #f97316; }
+.tpl-diag-orange .badge-role { background: #f97316; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-diag-orange .person-name { font-size: 15px; font-weight: 800; color: #0f172a; }
+.tpl-diag-orange .person-sub { font-size: 11px; font-weight: 700; color: #f97316; }
+.tpl-diag-orange .lbl { font-weight: 700; color: #64748b; width: 42%; }
+.tpl-diag-orange .val { font-weight: 600; color: #0f172a; }
+.tpl-diag-orange .card-footer { background: #0f172a; color: white; border-top: 2px solid #f97316; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+.tpl-diag-orange .card-footer .sign-text { color: #f1f5f9; }
+
+/* Template 3: Corporate Burgundy & Gold */
+.tpl-burgundy-gold .card-header { background: linear-gradient(135deg, #831843, #701a75); border-bottom: 3px solid #f59e0b; color: white; padding: 12px; text-align: center; }
+.tpl-burgundy-gold .school-name { font-size: 13px; font-weight: 800; color: #fef08a; }
+.tpl-burgundy-gold .school-address { font-size: 8.5px; color: #fbcfe8; }
+.tpl-burgundy-gold .photo-container { border: 3px solid #831843; }
+.tpl-burgundy-gold .badge-role { background: #f59e0b; color: #831843; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 12px; margin: 4px 0 2px; }
+.tpl-burgundy-gold .person-name { font-size: 15px; font-weight: 800; color: #831843; }
+.tpl-burgundy-gold .person-sub { font-size: 11px; font-weight: 700; color: #d97706; }
+.tpl-burgundy-gold .lbl { font-weight: 700; color: #831843; width: 42%; }
+.tpl-burgundy-gold .val { font-weight: 600; color: #1e293b; }
+.tpl-burgundy-gold .card-footer { background: #fdf2f8; border-top: 1px solid #fce7f3; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Template 4: Emerald Green Eco-Modern */
+.tpl-emerald-green .card-header { background: linear-gradient(135deg, #065f46, #059669); border-bottom: 3px solid #84cc16; color: white; padding: 12px; text-align: center; }
+.tpl-emerald-green .school-name { font-size: 13px; font-weight: 800; color: #ecfdf5; }
+.tpl-emerald-green .school-address { font-size: 8.5px; color: #a7f3d0; }
+.tpl-emerald-green .photo-container { border: 3px solid #059669; }
+.tpl-emerald-green .badge-role { background: #059669; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 12px; margin: 4px 0 2px; }
+.tpl-emerald-green .person-name { font-size: 15px; font-weight: 800; color: #064e3b; }
+.tpl-emerald-green .person-sub { font-size: 11px; font-weight: 700; color: #059669; }
+.tpl-emerald-green .lbl { font-weight: 700; color: #047857; width: 42%; }
+.tpl-emerald-green .val { font-weight: 600; color: #0f172a; }
+.tpl-emerald-green .card-footer { background: #f0fdf4; border-top: 1px solid #d1fae5; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Template 5: Tech Cyber Cyan */
+.tpl-cyber-cyan .card-header { background: linear-gradient(135deg, #0f172a, #1e293b); border-bottom: 3px solid #06b6d4; color: white; padding: 12px; text-align: center; }
+.tpl-cyber-cyan .school-name { font-size: 13px; font-weight: 800; color: #67e8f9; }
+.tpl-cyber-cyan .school-address { font-size: 8.5px; color: #94a3b8; }
+.tpl-cyber-cyan .photo-container { border: 3px solid #06b6d4; }
+.tpl-cyber-cyan .badge-role { background: #06b6d4; color: #0f172a; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-cyber-cyan .person-name { font-size: 15px; font-weight: 800; color: #0f172a; }
+.tpl-cyber-cyan .person-sub { font-size: 11px; font-weight: 700; color: #0891b2; }
+.tpl-cyber-cyan .lbl { font-weight: 700; color: #0891b2; width: 42%; }
+.tpl-cyber-cyan .val { font-weight: 600; color: #0f172a; }
+.tpl-cyber-cyan .card-footer { background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Template 6: Royal Purple & Magenta */
+.tpl-purple-wave .card-header { background: linear-gradient(135deg, #581c87, #7e22ce); border-bottom: 3px solid #e879f9; color: white; padding: 12px; text-align: center; }
+.tpl-purple-wave .school-name { font-size: 13px; font-weight: 800; color: #fae8ff; }
+.tpl-purple-wave .school-address { font-size: 8.5px; color: #e9d5ff; }
+.tpl-purple-wave .photo-container { border: 3px solid #a855f7; }
+.tpl-purple-wave .badge-role { background: #a855f7; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 12px; margin: 4px 0 2px; }
+.tpl-purple-wave .person-name { font-size: 15px; font-weight: 800; color: #581c87; }
+.tpl-purple-wave .person-sub { font-size: 11px; font-weight: 700; color: #9333ea; }
+.tpl-purple-wave .lbl { font-weight: 700; color: #7e22ce; width: 42%; }
+.tpl-purple-wave .val { font-weight: 600; color: #1e293b; }
+.tpl-purple-wave .card-footer { background: #faf5ff; border-top: 1px solid #f3e8ff; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Template 7: Crimson Academic Shield */
+.tpl-crimson-shield .card-header { background: linear-gradient(135deg, #991b1b, #b91c1c); border-bottom: 3px solid #fca5a5; color: white; padding: 12px; text-align: center; }
+.tpl-crimson-shield .school-name { font-size: 13px; font-weight: 800; color: #fee2e2; }
+.tpl-crimson-shield .school-address { font-size: 8.5px; color: #fecaca; }
+.tpl-crimson-shield .photo-container { border: 3px solid #dc2626; }
+.tpl-crimson-shield .badge-role { background: #dc2626; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-crimson-shield .person-name { font-size: 15px; font-weight: 800; color: #991b1b; }
+.tpl-crimson-shield .person-sub { font-size: 11px; font-weight: 700; color: #b91c1c; }
+.tpl-crimson-shield .lbl { font-weight: 700; color: #b91c1c; width: 42%; }
+.tpl-crimson-shield .val { font-weight: 600; color: #1e293b; }
+.tpl-crimson-shield .card-footer { background: #fef2f2; border-top: 1px solid #fee2e2; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Template 8: Sunburst Amber & Navy */
+.tpl-sunburst-amber .card-header { background: #1e3a8a; border-bottom: 4px solid #f59e0b; color: white; padding: 12px; text-align: center; }
+.tpl-sunburst-amber .school-name { font-size: 13px; font-weight: 800; color: #fde68a; }
+.tpl-sunburst-amber .school-address { font-size: 8.5px; color: #bfdbfe; }
+.tpl-sunburst-amber .photo-container { border: 3px solid #f59e0b; }
+.tpl-sunburst-amber .badge-role { background: #f59e0b; color: #1e3a8a; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 12px; margin: 4px 0 2px; }
+.tpl-sunburst-amber .person-name { font-size: 15px; font-weight: 800; color: #1e3a8a; }
+.tpl-sunburst-amber .person-sub { font-size: 11px; font-weight: 700; color: #d97706; }
+.tpl-sunburst-amber .lbl { font-weight: 700; color: #1e40af; width: 42%; }
+.tpl-sunburst-amber .val { font-weight: 600; color: #0f172a; }
+.tpl-sunburst-amber .card-footer { background: #fffbeb; border-top: 1px solid #fef3c7; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Template 9: Minimalist Clean White */
+.tpl-minimal-clean { border: 2px solid #e2e8f0; }
+.tpl-minimal-clean .card-header { background: #ffffff; border-bottom: 2px solid #2563eb; color: #1e293b; padding: 12px; text-align: center; }
+.tpl-minimal-clean .school-name { font-size: 13px; font-weight: 800; color: #1e3a8a; }
+.tpl-minimal-clean .school-address { font-size: 8.5px; color: #64748b; }
+.tpl-minimal-clean .photo-container { border: 2px solid #2563eb; }
+.tpl-minimal-clean .badge-role { background: #f1f5f9; color: #2563eb; border: 1px solid #2563eb; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 12px; margin: 4px 0 2px; }
+.tpl-minimal-clean .person-name { font-size: 15px; font-weight: 800; color: #0f172a; }
+.tpl-minimal-clean .person-sub { font-size: 11px; font-weight: 700; color: #2563eb; }
+.tpl-minimal-clean .lbl { font-weight: 700; color: #64748b; width: 42%; }
+.tpl-minimal-clean .val { font-weight: 600; color: #0f172a; }
+.tpl-minimal-clean .card-footer { background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Template 10: Vintage Heritage Green */
+.tpl-vintage-green .card-header { background: #14532d; border-bottom: 3px solid #eab308; color: white; padding: 12px; text-align: center; }
+.tpl-vintage-green .school-name { font-size: 13px; font-weight: 800; color: #fef08a; }
+.tpl-vintage-green .school-address { font-size: 8.5px; color: #bbf7d0; }
+.tpl-vintage-green .photo-container { border: 3px solid #eab308; }
+.tpl-vintage-green .badge-role { background: #eab308; color: #14532d; font-size: 9.5px; font-weight: 800; padding: 2px 12px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-vintage-green .person-name { font-size: 15px; font-weight: 800; color: #14532d; }
+.tpl-vintage-green .person-sub { font-size: 11px; font-weight: 700; color: #ca8a04; }
+.tpl-vintage-green .lbl { font-weight: 700; color: #15803d; width: 42%; }
+.tpl-vintage-green .val { font-weight: 600; color: #0f172a; }
+.tpl-vintage-green .card-footer { background: #fefce8; border-top: 1px solid #fef08a; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* ==========================================================================
+   TEACHER SPECIAL TEMPLATES (10 Designs)
+   ========================================================================== */
+
+/* Teacher 1: Faculty Midnight Navy & Gold */
+.tpl-tea-navy-gold { background: #0f172a; color: #ffffff; }
+.tpl-tea-navy-gold .card-header { background: #1e293b; border-bottom: 3px solid #fbbf24; color: white; padding: 12px; text-align: center; }
+.tpl-tea-navy-gold .school-name { font-size: 13px; font-weight: 800; color: #fbbf24; }
+.tpl-tea-navy-gold .school-address { font-size: 8.5px; color: #cbd5e1; }
+.tpl-tea-navy-gold .photo-container { border: 3px solid #fbbf24; background: #1e293b; }
+.tpl-tea-navy-gold .badge-role { background: linear-gradient(90deg, #f59e0b, #fbbf24); color: #0f172a; font-size: 9.5px; font-weight: 800; padding: 3px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-navy-gold .person-name { font-size: 15px; font-weight: 800; color: #ffffff; }
+.tpl-tea-navy-gold .person-sub { font-size: 11.5px; font-weight: 700; color: #fbbf24; }
+.tpl-tea-navy-gold .lbl { font-weight: 700; color: #94a3b8; width: 44%; }
+.tpl-tea-navy-gold .val { font-weight: 600; color: #f8fafc; }
+.tpl-tea-navy-gold .card-footer { background: #1e293b; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+.tpl-tea-navy-gold .card-footer .sign-text { color: #fbbf24; }
+
+/* Teacher 2: Corporate Dual-Tone Royal Blue */
+.tpl-tea-corporate-blue .card-header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); border-bottom: 3px solid #60a5fa; color: white; padding: 12px; text-align: center; }
+.tpl-tea-corporate-blue .school-name { font-size: 13px; font-weight: 800; color: #ffffff; }
+.tpl-tea-corporate-blue .school-address { font-size: 8.5px; color: #dbeafe; }
+.tpl-tea-corporate-blue .photo-container { border: 3px solid #1e3a8a; }
+.tpl-tea-corporate-blue .badge-role { background: #1e3a8a; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-corporate-blue .person-name { font-size: 15px; font-weight: 800; color: #1e3a8a; }
+.tpl-tea-corporate-blue .person-sub { font-size: 11.5px; font-weight: 700; color: #2563eb; }
+.tpl-tea-corporate-blue .lbl { font-weight: 700; color: #1e40af; width: 44%; }
+.tpl-tea-corporate-blue .val { font-weight: 600; color: #0f172a; }
+.tpl-tea-corporate-blue .card-footer { background: #eff6ff; border-top: 1px solid #bfdbfe; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Teacher 3: Minimalist Official Staff Pass */
+.tpl-tea-official-minimal .card-header { background: #ffffff; border-bottom: 2px solid #0284c7; color: #0f172a; padding: 12px; text-align: center; }
+.tpl-tea-official-minimal .school-name { font-size: 13px; font-weight: 800; color: #0369a1; }
+.tpl-tea-official-minimal .school-address { font-size: 8.5px; color: #64748b; }
+.tpl-tea-official-minimal .photo-container { border: 2px solid #0284c7; }
+.tpl-tea-official-minimal .badge-role { background: #0284c7; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 12px; margin: 4px 0 2px; }
+.tpl-tea-official-minimal .person-name { font-size: 15px; font-weight: 800; color: #0f172a; }
+.tpl-tea-official-minimal .person-sub { font-size: 11.5px; font-weight: 700; color: #0284c7; }
+.tpl-tea-official-minimal .lbl { font-weight: 700; color: #0284c7; width: 44%; }
+.tpl-tea-official-minimal .val { font-weight: 600; color: #0f172a; }
+.tpl-tea-official-minimal .card-footer { background: #f0f9ff; border-top: 1px solid #e0f2fe; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Teacher 4: Official DDO Burgundy & Rose */
+.tpl-tea-maroon-ddo .card-header { background: linear-gradient(135deg, #701a75, #831843); border-bottom: 3px solid #f43f5e; color: white; padding: 12px; text-align: center; }
+.tpl-tea-maroon-ddo .school-name { font-size: 13px; font-weight: 800; color: #fecdd3; }
+.tpl-tea-maroon-ddo .school-address { font-size: 8.5px; color: #fbcfe8; }
+.tpl-tea-maroon-ddo .photo-container { border: 3px solid #be123c; }
+.tpl-tea-maroon-ddo .badge-role { background: #be123c; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-maroon-ddo .person-name { font-size: 15px; font-weight: 800; color: #881337; }
+.tpl-tea-maroon-ddo .person-sub { font-size: 11.5px; font-weight: 700; color: #be123c; }
+.tpl-tea-maroon-ddo .lbl { font-weight: 700; color: #be123c; width: 44%; }
+.tpl-tea-maroon-ddo .val { font-weight: 600; color: #1e293b; }
+.tpl-tea-maroon-ddo .card-footer { background: #fff1f2; border-top: 1px solid #ffe4e6; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Teacher 5: Senior Education Officer Emerald & Gold */
+.tpl-tea-emerald-officer .card-header { background: linear-gradient(135deg, #064e3b, #047857); border-bottom: 3px solid #f59e0b; color: white; padding: 12px; text-align: center; }
+.tpl-tea-emerald-officer .school-name { font-size: 13px; font-weight: 800; color: #fde68a; }
+.tpl-tea-emerald-officer .school-address { font-size: 8.5px; color: #a7f3d0; }
+.tpl-tea-emerald-officer .photo-container { border: 3px solid #047857; }
+.tpl-tea-emerald-officer .badge-role { background: #f59e0b; color: #064e3b; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-emerald-officer .person-name { font-size: 15px; font-weight: 800; color: #064e3b; }
+.tpl-tea-emerald-officer .person-sub { font-size: 11.5px; font-weight: 700; color: #047857; }
+.tpl-tea-emerald-officer .lbl { font-weight: 700; color: #047857; width: 44%; }
+.tpl-tea-emerald-officer .val { font-weight: 600; color: #0f172a; }
+.tpl-tea-emerald-officer .card-footer { background: #ecfdf5; border-top: 1px solid #d1fae5; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Teacher 6: Executive Slate Grey & Cobalt */
+.tpl-tea-slate-executive .card-header { background: #1e293b; border-bottom: 3px solid #3b82f6; color: white; padding: 12px; text-align: center; }
+.tpl-tea-slate-executive .school-name { font-size: 13px; font-weight: 800; color: #93c5fd; }
+.tpl-tea-slate-executive .school-address { font-size: 8.5px; color: #cbd5e1; }
+.tpl-tea-slate-executive .photo-container { border: 3px solid #3b82f6; }
+.tpl-tea-slate-executive .badge-role { background: #3b82f6; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-slate-executive .person-name { font-size: 15px; font-weight: 800; color: #0f172a; }
+.tpl-tea-slate-executive .person-sub { font-size: 11.5px; font-weight: 700; color: #2563eb; }
+.tpl-tea-slate-executive .lbl { font-weight: 700; color: #475569; width: 44%; }
+.tpl-tea-slate-executive .val { font-weight: 600; color: #0f172a; }
+.tpl-tea-slate-executive .card-footer { background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Teacher 7: Royal Purple Faculty */
+.tpl-tea-purple-faculty .card-header { background: #4c1d95; border-bottom: 3px solid #fbbf24; color: white; padding: 12px; text-align: center; }
+.tpl-tea-purple-faculty .school-name { font-size: 13px; font-weight: 800; color: #fde68a; }
+.tpl-tea-purple-faculty .school-address { font-size: 8.5px; color: #e9d5ff; }
+.tpl-tea-purple-faculty .photo-container { border: 3px solid #7c3aed; }
+.tpl-tea-purple-faculty .badge-role { background: #fbbf24; color: #4c1d95; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-purple-faculty .person-name { font-size: 15px; font-weight: 800; color: #4c1d95; }
+.tpl-tea-purple-faculty .person-sub { font-size: 11.5px; font-weight: 700; color: #6d28d9; }
+.tpl-tea-purple-faculty .lbl { font-weight: 700; color: #6d28d9; width: 44%; }
+.tpl-tea-purple-faculty .val { font-weight: 600; color: #1e293b; }
+.tpl-tea-purple-faculty .card-footer { background: #faf5ff; border-top: 1px solid #f3e8ff; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Teacher 8: Luxury Matte Charcoal */
+.tpl-tea-charcoal-matte { background: #18181b; color: #f4f4f5; }
+.tpl-tea-charcoal-matte .card-header { background: #27272a; border-bottom: 3px solid #a1a1aa; color: white; padding: 12px; text-align: center; }
+.tpl-tea-charcoal-matte .school-name { font-size: 13px; font-weight: 800; color: #ffffff; }
+.tpl-tea-charcoal-matte .school-address { font-size: 8.5px; color: #a1a1aa; }
+.tpl-tea-charcoal-matte .photo-container { border: 3px solid #a1a1aa; background: #27272a; }
+.tpl-tea-charcoal-matte .badge-role { background: #f4f4f5; color: #18181b; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-charcoal-matte .person-name { font-size: 15px; font-weight: 800; color: #ffffff; }
+.tpl-tea-charcoal-matte .person-sub { font-size: 11.5px; font-weight: 700; color: #e4e4e7; }
+.tpl-tea-charcoal-matte .lbl { font-weight: 700; color: #a1a1aa; width: 44%; }
+.tpl-tea-charcoal-matte .val { font-weight: 600; color: #f4f4f5; }
+.tpl-tea-charcoal-matte .card-footer { background: #27272a; border-top: 1px solid #3f3f46; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+.tpl-tea-charcoal-matte .card-footer .sign-text { color: #d4d4d8; }
+
+/* Teacher 9: Modern Institute Teal */
+.tpl-tea-teal-modern .card-header { background: linear-gradient(135deg, #0f766e, #0e7490); border-bottom: 3px solid #2dd4bf; color: white; padding: 12px; text-align: center; }
+.tpl-tea-teal-modern .school-name { font-size: 13px; font-weight: 800; color: #ccfbf1; }
+.tpl-tea-teal-modern .school-address { font-size: 8.5px; color: #99f6e4; }
+.tpl-tea-teal-modern .photo-container { border: 3px solid #0f766e; }
+.tpl-tea-teal-modern .badge-role { background: #0f766e; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-teal-modern .person-name { font-size: 15px; font-weight: 800; color: #134e4a; }
+.tpl-tea-teal-modern .person-sub { font-size: 11.5px; font-weight: 700; color: #0f766e; }
+.tpl-tea-teal-modern .lbl { font-weight: 700; color: #0f766e; width: 44%; }
+.tpl-tea-teal-modern .val { font-weight: 600; color: #0f172a; }
+.tpl-tea-teal-modern .card-footer { background: #f0fdfa; border-top: 1px solid #ccfbf1; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Teacher 10: Rajasthan Shiksha Official Tri-Color */
+.tpl-tea-rajasthan-shiksha .card-header { background: #1e3a8a; border-top: 4px solid #f97316; border-bottom: 4px solid #16a34a; color: white; padding: 10px; text-align: center; }
+.tpl-tea-rajasthan-shiksha .school-name { font-size: 13px; font-weight: 800; color: #ffffff; }
+.tpl-tea-rajasthan-shiksha .school-address { font-size: 8.5px; color: #fed7aa; }
+.tpl-tea-rajasthan-shiksha .photo-container { border: 3px solid #1e3a8a; }
+.tpl-tea-rajasthan-shiksha .badge-role { background: #1e3a8a; color: #fff; font-size: 9.5px; font-weight: 800; padding: 2px 14px; border-radius: 4px; margin: 4px 0 2px; }
+.tpl-tea-rajasthan-shiksha .person-name { font-size: 15px; font-weight: 800; color: #1e3a8a; }
+.tpl-tea-rajasthan-shiksha .person-sub { font-size: 11.5px; font-weight: 700; color: #f97316; }
+.tpl-tea-rajasthan-shiksha .lbl { font-weight: 700; color: #1e3a8a; width: 44%; }
+.tpl-tea-rajasthan-shiksha .val { font-weight: 600; color: #0f172a; }
+.tpl-tea-rajasthan-shiksha .card-footer { background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; }
+
+/* Shared Card Elements: Card Header Tiers */
+.card-header {
+  padding: 10px 12px 8px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.header-tier-school {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.header-tier-school .school-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin: 0;
+  display: block;
+}
+
+.header-tier-school .school-name {
+  font-size: 13.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.25;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.header-tier-address {
+  font-size: 8.8px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2px 0 3px 0;
+  opacity: 0.95;
+  text-align: center;
+  width: 100%;
+}
+
+.header-tier-role {
+  width: 100%;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.card-top-heading-banner {
+  width: 100%;
+  text-align: center;
+  padding: 2px 0 3px 0;
+  z-index: 5;
+}
+
+.card-top-badge {
+  display: inline-block;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.3px;
+  padding: 2.5px 14px !important;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  margin: 0 auto !important;
+}
+
+.card-body {
+  padding: 6px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.person-name {
+  font-size: 17.5px;
+  font-weight: 800;
+  color: #0f172a;
+  text-align: center;
+  margin: 4px 0 2px 0;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.person-sub {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.details-table {
+  width: 100%;
+  font-size: 12.5px;
+  border-collapse: collapse;
+  margin: auto 0;
+  text-align: center;
+}
+
+.details-table td {
+  padding: 4.5px 2px;
+  vertical-align: middle;
+  line-height: 1.4;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.details-table .lbl {
+  font-weight: 700;
+  color: #475569;
+  text-align: right;
+  width: 46%;
+  padding-right: 8px;
+  white-space: nowrap;
+}
+
+.details-table .val {
+  font-weight: 800;
+  color: #0f172a;
+  text-align: left;
+  width: 54%;
+  padding-left: 2px;
+}
+
+/* Custom Blank ID Card Design Styles */
+.tpl-custom-bg {
+  background-color: transparent !important;
+  background-size: 100% 100% !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+.tpl-custom-bg .card-header {
+  background: transparent !important;
+  color: #0f172a !important;
+  border-bottom: none !important;
+}
+
+.tpl-custom-bg .school-name {
+  color: #0f172a !important;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+
+.tpl-custom-bg .school-address {
+  color: #334155 !important;
+}
+
+.tpl-custom-bg .card-footer {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* When user checks "Hide School Header Text" */
+.custom-header-hidden .card-header {
+  visibility: hidden !important;
+  height: 38px !important;
+}
+
+/* When user checks "Transparent Footer" */
+.custom-footer-transparent .card-footer {
+  background: transparent !important;
+  border-top: none !important;
+}
+
+.school-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin: 0 auto 3px auto;
+  display: block;
+}
+
+.qr-box {
+  width: 44px;
+  height: 44px;
+}
+
+.sign-box {
+  text-align: center;
+}
+
+.sign-img {
+  height: 25px;
+  max-width: 75px;
+  object-fit: contain;
+}
+
+.sign-text {
+  font-size: 8px;
+  font-weight: 700;
+  color: #475569;
+  border-top: 1px solid #94a3b8;
+  padding-top: 1px;
+}
+
+/* ==========================================================================
+   A4 PRINT LAYOUT - MAXIMUM USE OF A4 PAPER
+   Landscape: 10 Cards Per A4 Page (2 cols x 5 rows)
+   Portrait: 9 Cards Per A4 Page (3 cols x 3 rows)
+   ========================================================================== */
+#print-output-container {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 4mm 4mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .app-header,
+  .app-container,
+  .no-print {
+    display: none !important;
+  }
+
+  #print-output-container {
+    display: block !important;
+  }
+
+  .a4-page {
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+    box-sizing: border-box;
+    background: #ffffff;
+  }
+
+  /* -------------------------------------------------------------
+     PORTRAIT MODE (Vertical): 9 Cards per A4 Page (3x3 Grid)
+     Card dimensions: 54mm width x 85.6mm height
+     ------------------------------------------------------------- */
+  .a4-page.print-portrait-mode {
+    width: 200mm;
+    height: 286mm;
+    max-height: 286mm;
+    padding: 3mm 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 54mm);
+    grid-template-rows: repeat(3, 85.6mm);
+    column-gap: 5mm;
+    row-gap: 4mm;
+    justify-content: center;
+    align-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .a4-page.print-portrait-mode .id-card {
+    width: 54mm !important;
+    max-width: 54mm !important;
+    height: 85.6mm !important;
+    max-height: 85.6mm !important;
+    min-height: 85.6mm !important; /* CRITICAL: overrides min-height: 505px */
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    border: 1px dashed #94a3b8 !important;
+    border-radius: 2.5mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important; /* CRITICAL: prevents overlap */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .a4-page.print-portrait-mode .card-punch-hole {
+    height: 2.5px !important;
+    width: 16px !important;
+    margin: 1.5px auto 0 auto !important;
+    border-radius: 2px !important;
+  }
+
+  .a4-page.print-portrait-mode .card-header {
+    padding: 2mm 2.5mm 2.5mm 2.5mm !important;
+    clip-path: none !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .a4-page.print-portrait-mode .school-logo {
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 auto 1px auto !important;
+    display: block !important;
+  }
+
+  .a4-page.print-portrait-mode .school-name {
+    font-size: 7.5px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .a4-page.print-portrait-mode .school-address {
+    font-size: 5.5px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .a4-page.print-portrait-mode .card-body {
+    padding: 1mm 2.5mm !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    overflow: hidden !important;
+  }
+
+  .a4-page.print-portrait-mode .photo-container {
+    width: 18mm !important;
+    height: 22mm !important;
+    margin: 1mm auto 1.5mm auto !important;
+    border-width: 1.5px !important;
+    border-radius: 2mm !important;
+    flex-shrink: 0 !important;
+  }
+
+  .a4-page.print-portrait-mode .badge-role {
+    font-size: 6px !important;
+    font-weight: 800 !important;
+    padding: 1px 5px !important;
+    margin: 0 0 1px 0 !important;
+    border-radius: 3px !important;
+    line-height: 1.1 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .a4-page.print-portrait-mode .person-name {
+    font-size: 9.5px !important;
+    font-weight: 800 !important;
+    margin: 1px 0 !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 48mm !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .a4-page.print-portrait-mode .person-sub {
+    font-size: 7.5px !important;
+    font-weight: 700 !important;
+    margin: 0 0 1px 0 !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 48mm !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .a4-page.print-portrait-mode .details-table {
+    width: 100% !important;
+    font-size: 7.2px !important;
+    border-collapse: collapse !important;
+    margin: auto 0 !important;
+    text-align: center !important;
+  }
+
+  .a4-page.print-portrait-mode .details-table td {
+    padding: 0.55px 0 !important;
+    line-height: 1.2 !important;
+    vertical-align: middle !important;
+    font-size: 7.2px !important;
+    font-weight: 700 !important;
+  }
+
+  .a4-page.print-portrait-mode .details-table .lbl {
+    width: 44% !important;
+    font-size: 7px !important;
+    font-weight: 700 !important;
+    text-align: right !important;
+    padding-right: 1.5mm !important;
+    white-space: nowrap !important;
+  }
+
+  .a4-page.print-portrait-mode .details-table .val {
+    font-size: 7.2px !important;
+    font-weight: 800 !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 28mm !important;
+  }
+
+  .a4-page.print-portrait-mode .card-footer {
+    padding: 1.5mm 3mm !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-top: 1px solid #e2e8f0 !important;
+    flex-shrink: 0 !important;
+    height: 12mm !important;
+    max-height: 12mm !important;
+    box-sizing: border-box !important;
+  }
+
+  .a4-page.print-portrait-mode .qr-box {
+    width: 9.5mm !important;
+    height: 9.5mm !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .a4-page.print-portrait-mode .qr-box img,
+  .a4-page.print-portrait-mode .qr-box canvas {
+    width: 9.5mm !important;
+    height: 9.5mm !important;
+  }
+
+  .a4-page.print-portrait-mode .sign-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .a4-page.print-portrait-mode .sign-img {
+    max-height: 6mm !important;
+    max-width: 18mm !important;
+    object-fit: contain !important;
+  }
+
+  .a4-page.print-portrait-mode .sign-text {
+    font-size: 4.8px !important;
+    line-height: 1 !important;
+    margin-top: 0.5px !important;
+  }
+
+  /* -------------------------------------------------------------
+     LANDSCAPE MODE (Horizontal): 10 Cards per A4 Page (2x5 Grid)
+     Card dimensions: 85.6mm width x 54mm height
+     ------------------------------------------------------------- */
+  .a4-page.print-landscape-mode {
+    width: 200mm;
+    height: 286mm;
+    max-height: 286mm;
+    padding: 2mm 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 85.6mm);
+    grid-template-rows: repeat(5, 54mm);
+    column-gap: 5mm;
+    row-gap: 2.5mm;
+    justify-content: center;
+    align-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .a4-page.print-landscape-mode .id-card {
+    width: 85.6mm !important;
+    max-width: 85.6mm !important;
+    height: 54mm !important;
+    max-height: 54mm !important;
+    min-height: 54mm !important; /* Overrides min-height */
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    border: 1px dashed #94a3b8 !important;
+    border-radius: 2.5mm !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .a4-page.print-landscape-mode .card-horizontal {
+    grid-template-columns: 24mm 1fr !important;
+    grid-template-rows: auto 1fr auto !important;
+  }
+
+  .a4-page.print-landscape-mode .card-header {
+    padding: 1.5mm 3mm !important;
+    gap: 2mm !important;
+  }
+
+  .a4-page.print-landscape-mode .school-logo {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .a4-page.print-landscape-mode .school-name {
+    font-size: 7.5px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .a4-page.print-landscape-mode .school-address {
+    font-size: 5.5px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .a4-page.print-landscape-mode .card-left-col {
+    padding: 1.5mm 2mm !important;
+  }
+
+  .a4-page.print-landscape-mode .card-left-col .photo-container {
+    width: 18mm !important;
+    height: 22mm !important;
+    margin: 0 0 1mm 0 !important;
+  }
+
+  .a4-page.print-landscape-mode .card-right-col {
+    padding: 1.5mm 3mm !important;
+  }
+
+  .a4-page.print-landscape-mode .person-name {
+    font-size: 9.5px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: center !important;
+  }
+
+  .a4-page.print-landscape-mode .person-sub {
+    font-size: 7.5px !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: center !important;
+  }
+
+  .a4-page.print-landscape-mode .details-table {
+    width: 100% !important;
+    font-size: 6.8px !important;
+    margin: auto 0 !important;
+    text-align: center !important;
+  }
+
+  .a4-page.print-landscape-mode .details-table td {
+    padding: 0.45px 0 !important;
+    line-height: 1.2 !important;
+    font-size: 6.8px !important;
+    font-weight: 700 !important;
+  }
+
+  .a4-page.print-landscape-mode .details-table .lbl {
+    font-size: 6.5px !important;
+    font-weight: 700 !important;
+    text-align: right !important;
+    width: 44% !important;
+    padding-right: 1.5mm !important;
+    white-space: nowrap !important;
+  }
+
+  .a4-page.print-landscape-mode .details-table .val {
+    font-size: 6.8px !important;
+    font-weight: 800 !important;
+    text-align: left !important;
+  }
+
+  /* Custom Blank Background Print Support */
+  .a4-page .id-card.tpl-custom-bg {
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .a4-page .id-card.custom-header-hidden .card-header {
+    visibility: hidden !important;
+    height: 10mm !important;
+  }
+
+  .a4-page .id-card.custom-footer-transparent .card-footer {
+    background: transparent !important;
+    border-top: none !important;
+  }
+
+  .a4-page.print-landscape-mode .card-footer {
+    padding: 1mm 3mm !important;
+    height: 10mm !important;
+    max-height: 10mm !important;
+  }
+
+  .a4-page.print-landscape-mode .qr-box {
+    width: 8mm !important;
+    height: 8mm !important;
+  }
+
+  .a4-page.print-landscape-mode .qr-box img,
+  .a4-page.print-landscape-mode .qr-box canvas {
+    width: 8mm !important;
+    height: 8mm !important;
+  }
+
+  .a4-page.print-landscape-mode .sign-img {
+    max-height: 5.5mm !important;
+    max-width: 18mm !important;
+  }
+
+  .a4-page.print-landscape-mode .sign-text {
+    font-size: 4.5px !important;
+  }
+}
+
+/* ==========================================================================
+   HOW TO USE MODAL (संपूर्ण उपयोग विधि डायलॉग)
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-dialog {
+  background: #ffffff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  padding: 16px 22px;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border-bottom: 1px solid #bfdbfe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-close-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+  border-color: #fca5a5;
+}
+
+.modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.guide-banner {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  color: #166534;
+  font-size: 13px;
+}
+
+.guide-step {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.step-num {
+  width: 30px;
+  height: 30px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.step-content p {
+  margin-bottom: 6px;
+}
+
+.step-content ul {
+  padding-left: 20px;
+  margin: 4px 0;
+}
+
+.step-content li {
+  margin-bottom: 4px;
+}
+
+.print-settings-box {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 8px;
+  font-size: 12.5px;
+}
+
+.print-setting-row {
+  padding: 4px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.print-setting-row.highlight {
+  border-bottom: none;
+  background: #fffbeb;
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: #b45309;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.modal-footer {
+  padding: 12px 22px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
